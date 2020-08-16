@@ -7,14 +7,13 @@
   <a href="https://www.npmjs.com/package/vue-element-loading"><img src="https://travis-ci.org/biigpongsatorn/biigpongsatorn.github.io.svg?branch=dev" alt="Build Status"></a>
 </p>
 
-# vue-element-loading
+# vue-permission-provider
 
-⏳ Loading inside a container or full screen for Vue.js
+🚪 Shows or hides component depending of the user permission for Vue.js
 
 # 👀 Document & Demo Page
 
 - [Docs & Live demo](https://biigpongsatorn.github.io/#/vue-element-loading)
-- [Fully feature live demo](https://vue-element-loading.netlify.com/)
 
 # 💻 Install
 
@@ -49,89 +48,9 @@ export default {
 ## Inside container
 ```html
 <div class="parent">
-  <vue-element-loading :active="show" spinner="bar-fade-scale"/>
-  <span>
-    This is my content.
-  </span>
+  <div>here example</div>
 </div>
 ```
-
-## Full screen
-```html
-<body>
-  <vue-element-loading :active="show" is-full-screen/>
-</body>
-```
-
-## Adjust Spinner Color
-Use the `color` parameter to set the color of the displayed spinner (does not affect custom spinner images).
-```html
-<div class="parent">
-  <vue-element-loading :active="show" spinner="bar-fade-scale" color="#FF6700"/>
-  <span>
-    This is my content.
-  </span>
-</div>
-```
-
-## Set text
-Use the `text` parameter to set the text which will appear below loader.
-```html
-<div class="parent">
-  <vue-element-loading :active="show" spinner="bar-fade-scale" color="#FF6700" text="Please wait..."/>
-  <span>
-    This is my content.
-  </span>
-</div>
-```
-
-## Set text style
-Use the `textStyle` parameter to set the style of text( you need to pass css-in-js way using camelCase exp. fontSize, backgroundColor etc).
-```html
-<div class="parent">
-  <vue-element-loading :active="show" spinner="bar-fade-scale" color="#FF6700" text="Please textStyle={fontSize: '25px'}  wait..."/>
-  <span>
-    This is my content.
-  </span>
-</div>
-```
-
-## Adjust Spinner Size
-Use the `size` parameter to set the size of the displayed spinner (does not affect custom spinner images).
-```html
-<div class="parent">
-  <vue-element-loading :active="show" spinner="bar-fade-scale" size="128"/>
-  <span>
-    This is my content.
-  </span>
-</div>
-```
-
-## Adjust Spinner Animation Speed
-Use the `duration` parameter to set the animation loop duration in seconds (does not affect custom spinner images).
-```html
-<div class="parent">
-  <vue-element-loading :active="show" spinner="bar-fade-scale" duration="1.0"/>
-  <span>
-    This is my content.
-  </span>
-</div>
-```
-
-## Customize loader
-```html
-<div class="parent">
-  <vue-element-loading :active="show">
-    <img src="/static/pikachu.gif" width="55px" height="55px">
-  </vue-element-loading>
-</div>
-```
-
-# 🌀 Spinner
-
-<img src="https://raw.githubusercontent.com/biigpongsatorn/vue-element-loading/HEAD/static/spinner.png">
-
-[See full document here.](https://biigpongsatorn.github.io/#/vue-element-loading)
 
 # ⚙️ Props
 | Props       | Type          | Default  | Description  |
