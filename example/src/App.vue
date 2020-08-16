@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div>
+      <permission-provider :permissionId="1000">
+        <template v-slot="slotProps">
+          {{slotProps}}
+          <button>My create button</button>
+        </template>
+      </permission-provider>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import PermissionsData from "./permissions.json";
 
 export default {
   name: "App",
-  components: {
-    HelloWorld
+  mounted() {
+    this["$vpermissions"] = require("./permissions.json");
+    console.log(this);
   }
 };
 </script>
