@@ -1,27 +1,46 @@
 export default {
+  name: "permission-provider",
   props: {
     permissionId: {
       type: Number,
       required: true,
     },
-  },
-  data: () => ({
-    authorized: true,
-    permission: {},
-  }),
-  render() {
-    const slot = this.$scopedSlots.default({
-      authorized: this.authorized,
-      permission: this.permission,
-    });
-
-    return Array.isArray(slot) ? slot[0] : slot;
+    full: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   mounted() {
-    // console.log(this);
+    this.isAuthorized = this.verifyPermission(this.permissionId);
+  },
+  render(createElement) {
+    const isAuthorized = this.verifyPermission(this.permissionId);
+
+    const slots = this.$scopedSlots.default({
+      isAuthorized: isAuthorized,
+    });
+
+    //Verify if all slot will be evaluate
+    if (this.full) {
+      return isAuthorized
+        ? createElement("div", [...slots])
+        : createElement("div");
+    }
+
+    //Verify that has at least one node
+    if (!slots) {
+      return createElement("div");
+    }
+
+    //Create a container element for render multiple childrens.
+    const elemetContainer = createElement("div", [...slots]);
+    return elemetContainer;
   },
   methods: {
     //TODO: Check if the user has permission to see the element
-    userHasPermission(permissionId) {},
+    verifyPermission(permissionId) {
+      return this.$root.$vpermissions.find((id) => id === permissionId);
+    },
   },
 };
