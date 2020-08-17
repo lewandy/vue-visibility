@@ -6,12 +6,6 @@ export function install(Vue) {
   Vue.component(PermissionProvider.name, PermissionProvider);
 }
 
-// Expose the components
-export {
-  PermissionProvider,
-  /* -- Add more components here -- */
-};
-
 /* -- Plugin definition & Auto-install -- */
 /* You shouldn't have to modify the code below */
 
