@@ -1,4 +1,4 @@
-<a href="https://www.buymeacoffee.com/biigpongsatorn" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+<a href="https://www.buymeacoffee.com/lewandy" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 <p>
   <a href="https://npmjs.com/package/vue-element-loading"><img src="https://img.shields.io/npm/v/vue-element-loading.svg?style=flat" alt="NPM version"></a>
@@ -9,65 +9,58 @@
 
 # vue-permission-provider
 
-🚪 Shows or hides component depending of the user permission for Vue.js
+🚪 Shows or hides elements depending of the user permission for Vue.js
 
 # 👀 Document & Demo Page
 
-- [Docs & Live demo](https://biigpongsatorn.github.io/#/vue-element-loading)
+- [Docs & Live demo]()
 
 # 💻 Install
 
 ```sh
-npm install --save vue-element-loading
+npm install --save vue-permission-provider
 ```
+
 or
+
 ```sh
-yarn add vue-element-loading
+yarn add vue-permission-provider
 ```
 
 # 🕹 Usage
-```javascript
-import Vue from 'vue'
-import VueElementLoading from 'vue-element-loading'
 
-Vue.component('VueElementLoading', VueElementLoading)
-```
-or
 ```javascript
-import VueElementLoading from 'vue-element-loading'
+import Vue from "vue";
+import PermissionProvider from "vue-permission-provider";
 
-export default {
-  components: {
-    VueElementLoading
-  }
-}
+Vue.use(PermissionProvider);
 ```
 
 # 🔎 Example
 
-## Inside container
+## With component provider
+
 ```html
-<div class="parent">
-  <div>here example</div>
-</div>
+<template>
+  <div id="app">
+    <div>
+      <permission-provider :full="false" :permissionId="1000">
+        <template v-slot="{ isAuthorized }">
+          <button v-show="isAuthorized">My create button</button>
+          <div>Other node</div>
+          <div>Other node</div>
+        </template>
+      </permission-provider>
+    </div>
+  </div>
+</template>
 ```
 
 # ⚙️ Props
-| Props       | Type          | Default  | Description  |
-| ----------- |:--------------| ---------|--------------|
-| active      | Boolean       | -        | Status for show/hide loading |
-| spinner    | String        | spinner   | Spinner icon name: `spinner`, `mini-spinner`, `ring`, `line-wave`, `line-scale`, `line-down`, `bar-fade`, `bar-fade-scale` |
-| color    | String        | #000        | Color of spinner icon |
-| background-color    | String        | rgba(255, 255, 255, .9)        | Background color of spinner icon (for overlay) |
-| size    | String        | "40"        | The size to display the spinner in pixels  (**NOTE:** this will not affect custom spinner images) |
-| duration    | String        | "0.6"        | The duration of one 'loop' of the spinner animation, in seconds  (**NOTE:** this will not affect custom spinner images) |
-| delay    | Number \| String        | 0        | The minimum appearing duration of loading in seconds |
-| is-full-screen    | Boolean        | false        | Loader will overlay the full page |
-| text   | String    | -  | Text will appear below loader |
-| text-style | Object | {} | Change style of the text below loader |
 
 
 # 🤝 Contributing
+
 1. Fork this repository.
 2. Create new branch with feature name.
 3. Run `npm install` and `npm run dev`.
@@ -84,4 +77,4 @@ If you like this project, You can support me with starring ⭐ this repository.
 
 [MIT](LICENSE)
 
-Developed with ❤️ and ☕️
+Developed with ❤️ and ☕️ from the dominican republic 🌴 
