@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <div>
-      <permission-provider :permissionId="1000">
-        <template v-slot="slotProps">
-          {{slotProps}}
-          <button>My create button</button>
+      <permission-provider :full="false" :permissionId="permissions.create">
+        <template v-slot="{ isAuthorized }">
+          <button v-show="isAuthorized">My create button</button>
+          <div>Other node</div>
+          <div>Other node</div>
         </template>
       </permission-provider>
     </div>
@@ -16,10 +17,14 @@ import PermissionsData from "./permissions.json";
 
 export default {
   name: "App",
-  mounted() {
-    this["$vpermissions"] = require("./permissions.json");
-    console.log(this);
-  }
+  created() {
+    this.$root.$vpermissions = [1000, 1002, 1003];
+  },
+  data: () => ({
+    permissions: {
+      create: 1000,
+    },
+  }),
 };
 </script>
 
