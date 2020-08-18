@@ -1,19 +1,6 @@
-<a href="https://www.buymeacoffee.com/lewandy" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
-<p>
-  <a href="https://npmjs.com/package/vue-element-loading"><img src="https://img.shields.io/npm/v/vue-element-loading.svg?style=flat" alt="NPM version"></a>
-  <a href="https://npmjs.com/package/vue-element-loading"><img src="https://img.shields.io/npm/dm/vue-element-loading.svg?style=flat" alt="NPM downloads"></a>
-  <a href="https://www.npmjs.com/package/vue-element-loading"><img src="https://img.shields.io/npm/l/vue-element-loading.svg?style=flat" alt="License"></a>
-  <a href="https://www.npmjs.com/package/vue-element-loading"><img src="https://travis-ci.org/biigpongsatorn/biigpongsatorn.github.io.svg?branch=dev" alt="Build Status"></a>
-</p>
-
 # vue-permission-provider
 
 🚪 Shows or hides elements depending of the user permission for Vue.js
-
-# 👀 Document & Demo Page
-
-- [Docs & Live demo]()
 
 # 💻 Install
 
@@ -38,7 +25,7 @@ Vue.use(PermissionProvider);
 
 # 🔎 Example
 
-## With component provider
+## With component provider and prop :full in false
 
 ```html
 <template>
@@ -47,8 +34,22 @@ Vue.use(PermissionProvider);
       <permission-provider :full="false" :permissionId="1000">
         <template v-slot="{ isAuthorized }">
           <button v-show="isAuthorized">My create button</button>
-          <div>Other node</div>
-          <div>Other node</div>
+        </template>
+      </permission-provider>
+    </div>
+  </div>
+</template>
+```
+
+## With prop :full in true, in this case you dont need get the scoped slop becouse the component only will render entirely when the user has the permission.
+
+```html
+<template>
+  <div id="app">
+    <div>
+      <permission-provider :full="true" :permissionId="1000">
+        <template v-slot>
+          <button>My create button</button>
         </template>
       </permission-provider>
     </div>
@@ -58,13 +59,42 @@ Vue.use(PermissionProvider);
 
 # ⚙️ Props
 
+## Options
+
+ <table>
+ 	<thead>
+    <tr>
+    <th>Prop</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Available values</th>
+    </tr>
+  </thead>
+	<tbody>
+    	<tr>
+        <td>full</td>
+        <td>Boolean</td>
+        <td>false</td>
+        <td>false</td>
+        <td>false,true</td>
+        </tr>
+        <tr>
+        <td>permisionId</td>
+        <td>Number</td>
+        <td>true</td>
+        <td>null</td>
+        <td>numbers</td>
+        </tr>
+    </tbody>
+</table>
 
 # 🤝 Contributing
 
 1. Fork this repository.
 2. Create new branch with feature name.
-3. Run `npm install` and `npm run dev`.
-4. Create your feature.
+3. Go to example and run `npm install` and `npm run dev`.
+4. Create your feature in the src files.
 5. Commit and set commit message with feature name.
 6. Push your code to your fork repository.
 7. Create pull request. 🙂
@@ -77,4 +107,4 @@ If you like this project, You can support me with starring ⭐ this repository.
 
 [MIT](LICENSE)
 
-Developed with ❤️ and ☕️ from the dominican republic 🌴 
+Developed with ❤️ and ☕️ from the dominican republic 🌴
