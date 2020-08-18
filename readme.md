@@ -25,6 +25,21 @@ Vue.use(PermissionProvider);
 
 # 🔎 Example
 
+## Set user permissions
+
+```html
+<script>
+  import PermissionsData from "./permissions.json";
+
+  export default {
+    name: "App",
+    created() {
+      this.$setPermissions([1000, 3000, 2000]);
+    },
+  };
+</script>
+```
+
 ## With component provider and prop :full in false
 
 ```html
