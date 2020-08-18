@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-permission-provider": "0.0.1"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",

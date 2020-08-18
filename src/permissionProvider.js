@@ -16,7 +16,6 @@ export default {
   },
   render(createElement) {
     const isAuthorized = this.verifyPermission(this.permissionId);
-
     const slots = this.$scopedSlots.default({
       isAuthorized: isAuthorized,
     });
@@ -59,7 +58,9 @@ export default {
     },
     //TODO: Check if the user has permission to see the element
     verifyPermission(permissionId) {
-      return this.$root.$vpermissions.find((id) => id === permissionId);
+      return (
+        this.$root.$vpermissions.find((id) => id === permissionId) !== undefined
+      );
     },
   },
 };
