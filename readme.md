@@ -41,7 +41,7 @@ Vue.use(PermissionProvider);
 </template>
 ```
 
-## With prop :full in true, in this case you dont need get the scoped slop becouse the component only will render entirely when the user has the permission.
+## With prop :full in true, in this case you don't need get the scoped slot becouse the component only will render entirely when the user has the permission.
 
 ```html
 <template>
