@@ -1,8 +1,9 @@
 import PermissionProvider from "./permissionProvider";
+import Mixin from "./mixin"
 
 // Install the components
 export function install(Vue) {
-  Vue.prototype.$vpermissions = [];
+  Vue.mixin(Mixin);
   Vue.component(PermissionProvider.name, PermissionProvider);
 }
 
