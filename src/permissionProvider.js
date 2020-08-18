@@ -21,23 +21,40 @@ export default {
       isAuthorized: isAuthorized,
     });
 
-    //Verify if all slot will be evaluate
-    if (this.full) {
-      return isAuthorized
-        ? createElement("div", [...slots])
-        : createElement("div");
-    }
-
     //Verify that has at least one node
     if (!slots) {
-      return createElement("div");
+      return this.getDivWidthoutStyles(createElement, []);
+    }
+
+    if (this.full) {
+      //Verify if full prop is passed to evaluate all child nodes.
+      return isAuthorized
+        ? slots.length === 1
+          ? slots
+          : this.getDivWidthoutStyles(createElement, slots)
+        : this.getDivWidthoutStyles(createElement, []);
+    }
+
+    //Verify if the provider has only one node.
+    if (slots.length == 1) {
+      return slots;
     }
 
     //Create a container element for render multiple childrens.
-    const elemetContainer = createElement("div", [...slots]);
-    return elemetContainer;
+    return this.getDivWidthoutStyles(createElement, slots);
   },
   methods: {
+    getDivWidthoutStyles(createElement, vnodes) {
+      return createElement(
+        "div",
+        {
+          attrs: {
+            style: "all:unset",
+          },
+        },
+        vnodes
+      );
+    },
     //TODO: Check if the user has permission to see the element
     verifyPermission(permissionId) {
       return this.$root.$vpermissions.find((id) => id === permissionId);
