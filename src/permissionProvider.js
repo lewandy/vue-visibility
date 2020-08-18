@@ -37,7 +37,9 @@ export default {
 
     //Verify if the provider has only one node.
     if (slots.length == 1) {
-      return slots;
+      return isAuthorized
+        ? slots
+        : this.getDivWidthoutStyles(createElement, []);
     }
 
     //Create a container element for render multiple childrens.
