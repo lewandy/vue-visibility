@@ -1,6 +1,6 @@
 {
   "name": "vue-permission-provider",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "main": "vue-permission-provider.umd.js",
   "module": "dist/vue-permission-provider.esm.js",
   "unpkg": "dist/vue-permission-provider.min.js",
