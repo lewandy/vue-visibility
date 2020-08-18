@@ -27,7 +27,7 @@
                 {{ "Action with permission " + permissions.action2 }}
               </button>
               <button
-                v-else
+                v-if="!isAuthorized"
                 class="mb-2 inline bg-gray-200 shadow-md rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
               >
                 {{ "You can't see this. permissionId :" + permissions.action2 }}
