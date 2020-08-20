@@ -47,6 +47,15 @@ import PermissionsData from "./permissions.json";
 
 export default {
   name: "App",
+  data() {
+    return {
+      permissions: {
+        action1: 1000,
+        action2: 2000,
+        action3: 3000,
+      },
+    };
+  },
   created() {
     this.$setPermissions([1000, 3000, 2000]);
   },

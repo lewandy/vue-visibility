@@ -1,8 +1,16 @@
 import PermissionProvider from "./permissionProvider";
-import Mixin from "./mixin"
+import Mixin from "./mixin";
 
 // Install the components
 export function install(Vue) {
+  // Register a global custom directive called `v-focus`
+  Vue.directive("focus", {
+    // When the bound element is inserted into the DOM...
+    inserted: function (el) {
+      // Focus the element
+      el.focus();
+    },
+  });
   Vue.mixin(Mixin);
   Vue.component(PermissionProvider.name, PermissionProvider);
 }
