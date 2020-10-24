@@ -1,21 +1,21 @@
 export default {
-  name: "permission-provider",
+  name: "VueVisibility",
   props: {
-    permissionId: {
+    identifier: {
       type: Number,
       required: true,
     },
-    full: {
+    disable: {
       type: Boolean,
       required: false,
       default: false,
     },
   },
   mounted() {
-    this.isAuthorized = this.verifyPermission(this.permissionId);
+    this.isAuthorized = this.verifyPermission(this.identifier);
   },
   render(createElement) {
-    const isAuthorized = this.verifyPermission(this.permissionId);
+    const isAuthorized = this.verifyPermission(this.identifier);
     const slots = this.$scopedSlots.default({
       isAuthorized: isAuthorized,
     });
@@ -56,11 +56,16 @@ export default {
         vnodes
       );
     },
-    //TODO: Check if the user has permission to see the element
-    verifyPermission(permissionId) {
-      return (
-        this.$root.$vpermissions.find((id) => id === permissionId) !== undefined
-      );
+    /**
+     * Verify if identifier is stored in the app instance.
+     * @param {String} permissionIdentifier
+     */
+    verifyPermission(permissionIdentifier) {
+      const criteria = (id) => {
+        return id === permissionIdentifier;
+      };
+
+      return this.$root.$vpermissions.find(criteria);
     },
   },
 };

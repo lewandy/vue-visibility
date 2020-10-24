@@ -1,11 +1,7 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
-import PermissionProvider from "../../src/index";
+import VisibilityValidator from "../../src/index";
 
-Vue.config.productionTip = false;
-
-Vue.use(PermissionProvider);
-
-new Vue({
-  render: (h) => h(App),
-}).$mount("#app");
+createApp(App)
+  .use(VisibilityValidator)
+  .mount("#app");

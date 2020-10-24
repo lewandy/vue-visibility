@@ -1,24 +1,13 @@
-import PermissionProvider from "./permissionProvider";
-import Mixin from "./mixin";
+import VisibilityValidator from "./VisibilityValidator";
 
 // Install the components
 export function install(Vue) {
-  // Register a global custom directive called `v-focus`
-  Vue.directive("focus", {
-    // When the bound element is inserted into the DOM...
-    inserted: function (el) {
-      // Focus the element
-      el.focus();
-    },
-  });
-  Vue.mixin(Mixin);
-  Vue.component(PermissionProvider.name, PermissionProvider);
+  //TODO: Add directive for disable or hide elements
+
+  Vue.component(VisibilityValidator.name, VisibilityValidator);
 }
 
-/* -- Plugin definition & Auto-install -- */
-/* You shouldn't have to modify the code below */
-
-// Plugin
+// Plugin definition.
 const plugin = {
   install,
 };
@@ -26,12 +15,12 @@ const plugin = {
 export default plugin;
 
 // Auto-install
-let GlobalVue = null;
+let globalVueInstance = null;
 if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
+  globalVueInstance = window.Vue;
 } else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
+  globalVueInstance = global.Vue;
 }
-if (GlobalVue) {
-  GlobalVue.use(plugin);
+if (globalVueInstance) {
+  globalVueInstance.use(plugin);
 }
