@@ -1,18 +1,40 @@
-import VisibilityValidator from "./VisibilityValidator";
+import VisibilityProvider from "./VisibilityValidator";
 
-// Install the components
-export function install(Vue) {
-  //TODO: Add directive for disable or hide elements
+const directive = (app) => {
+  return (el, binding) => {
+    const permissions = app.config.globalProperties.$vpermissions;
 
-  Vue.component(VisibilityValidator.name, VisibilityValidator);
-}
+    const userCanSeeElement = permissions.find(
+      (item) => item === binding.value
+    );
 
-// Plugin definition.
-const plugin = {
-  install,
+    if (!userCanSeeElement) {
+      el.parentNode.removeChild(el); //Remove element from the DOM
+    }
+  };
 };
 
-export default plugin;
+// Install the components
+export default {
+  install(app) {
+    //Register directive
+    app.directive("visibility", directive(app));
+
+    /**
+      Mixin for set methods is entire app.
+    */
+    app.mixin({
+      methods: {
+        $setVisibilityPermissions(permissions) {
+          app.config.globalProperties.$vpermissions = permissions;
+        },
+      },
+    });
+
+    //Register the component
+    app.component(VisibilityProvider.name, VisibilityProvider);
+  },
+};
 
 // Auto-install
 let globalVueInstance = null;
