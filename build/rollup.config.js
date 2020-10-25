@@ -3,7 +3,7 @@ import buble from "rollup-plugin-buble"; // Transpile/polyfill with reasonable b
 export default {
   input: "src/index.js", // Path relative to package.json
   output: {
-    name: "vuePermissionProvider.js",
+    name: "VueVisibility.js",
     exports: "named",
   },
   plugins: [

@@ -1,37 +1,43 @@
-import PermissionProvider from "./permissionProvider";
-import Mixin from "./mixin";
+import VisibilityProvider from "./VueVisibility";
 
-// Install the components
-export function install(Vue) {
-  // Register a global custom directive called `v-focus`
-  Vue.directive("focus", {
-    // When the bound element is inserted into the DOM...
-    inserted: function (el) {
-      // Focus the element
-      el.focus();
+const VueVisibilityDirective = (el, binding) => {
+  const permissionId = binding.value;
+  const userPermissions = binding.instance.$getVisibilityPermissions();
+  const userIsAuthorized = userPermissions.find((id) => id === permissionId);
+
+  if (!userIsAuthorized) {
+    el.parentNode.removeChild(el); //Remove element from the DOM
+  }
+};
+
+function install(app) {
+  //Register directive
+  app.directive("visibility", VueVisibilityDirective);
+
+  /**
+    Mixin for set methods is entire app.
+  */
+  app.mixin({
+    methods: {
+      $setVisibilityPermissions(permissions) {
+        app.config.globalProperties.$vpermissions = permissions;
+      },
+      $getVisibilityPermissions() {
+        return app.config.globalProperties.$vpermissions;
+      },
     },
   });
-  Vue.mixin(Mixin);
-  Vue.component(PermissionProvider.name, PermissionProvider);
+
+  //Register component globally
+  app.component(VisibilityProvider.name, VisibilityProvider);
 }
 
-/* -- Plugin definition & Auto-install -- */
-/* You shouldn't have to modify the code below */
-
-// Plugin
-const plugin = {
+export default {
   install,
 };
 
-export default plugin;
-
 // Auto-install
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(plugin);
+var inBrowser = typeof window !== "undefined";
+if (inBrowser && window.Vue) {
+  window.Vue.use({ install });
 }
