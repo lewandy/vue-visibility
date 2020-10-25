@@ -2,8 +2,8 @@ import VisibilityProvider from "./VueVisibility";
 
 const VueVisibilityDirective = (el, binding) => {
   const permissionId = binding.value;
-  const permissions = binding.instance.$getVisibilityPermissions();
-  const userIsAuthorized = permissions.find((id) => id === permissionId);
+  const userPermissions = binding.instance.$getVisibilityPermissions();
+  const userIsAuthorized = userPermissions.find((id) => id === permissionId);
 
   if (!userIsAuthorized) {
     el.parentNode.removeChild(el); //Remove element from the DOM

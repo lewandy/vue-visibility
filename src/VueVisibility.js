@@ -12,15 +12,17 @@ export default {
   },
   render(context) {
     const { identifier, disable } = context;
-    const permissions = context.$root.$vpermissions;
+    const userPermissions = context.$root.$vpermissions;
 
-    if (!permissions) {
+    if (!userPermissions) {
       //TODO: Improve error handling.
       console.error("Permissions not found");
       return;
     }
 
-    const userIsAuthorized = permissions.find((item) => item === identifier);
+    const userIsAuthorized = userPermissions.find(
+      (item) => item === identifier
+    );
 
     if (!userIsAuthorized) {
       if (disable) {
