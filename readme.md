@@ -30,7 +30,7 @@ application.use(VueVisibility);
 application.mount("#app");
 ```
 
-## Set user permissions or identifiers globally
+## Set identifiers or permissions globally
 
 ```javascript
 <script>

@@ -1,6 +1,6 @@
 {
   "name": "@lewandy/vue-visibility",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "vue-visibility.umd.js",
   "module": "dist/vue-visibility.esm.js",
   "unpkg": "dist/vue-visibility.min.js",
