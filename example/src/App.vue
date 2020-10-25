@@ -4,7 +4,7 @@
 
     <div class="card-container">
       <!-- Using provider  component with fallback placeholder -->
-      <VueVisibilityProvider :identifier="124">
+      <VueVisibilityProvider :identifier="123">
         <template v-slot:placeholder>
           <h2>You dont have access to see this</h2>
         </template>
@@ -69,6 +69,7 @@ body {
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   height: 20rem;
+  width: 50%;
 }
 
 header {

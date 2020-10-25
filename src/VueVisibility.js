@@ -4,15 +4,9 @@ export default {
     identifier: {
       required: true,
     },
-    // Future feature
-    // disable: {
-    //   type: Boolean,
-    //   required: false,
-    //   default: false,
-    // },
   },
   render(context) {
-    const { identifier, disable } = context;
+    const { identifier } = context;
     const userPermissions = context.$root.$vpermissions;
 
     if (!userPermissions) {
@@ -26,10 +20,6 @@ export default {
     );
 
     if (!userIsAuthorized) {
-      if (disable) {
-        //TODO: Add disable styles and set not clickeble
-      }
-
       return context.$slots.placeholder ? context.$slots.placeholder() : null;
     }
 
