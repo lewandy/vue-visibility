@@ -4,7 +4,7 @@
 
     <div class="card-container">
       <!-- Using provider  component with fallback placeholder -->
-      <VueVisibilityProvider :identifier="1234">
+      <VueVisibilityProvider :identifier="124">
         <template v-slot:placeholder>
           <h2>You dont have access to see this</h2>
         </template>
@@ -18,6 +18,7 @@
       <VueVisibilityProvider :identifier="123">
         <div class="card"><h2>CARD 3</h2></div>
       </VueVisibilityProvider>
+      <div class="card"><h2>CARD 4</h2></div>
     </div>
   </div>
 </template>
@@ -50,16 +51,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 1px 1px 8px rgb(224, 217, 217);
   width: 100%;
   border-radius: 8px;
   background: rgb(214, 209, 209);
+}
+
+@media (max-width: 539px) {
+  .card-container {
+    display: flex !important;
+    flex-direction: column !important;
+  }
 }
 
 .card-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  width: 42rem;
   height: 20rem;
 }
 
@@ -68,7 +76,7 @@ header {
   justify-content: center;
   align-content: center;
   width: 50%;
-  box-shadow: 1px 1px 12px rgb(224, 217, 217);
+  box-shadow: 1px 1px 8px rgb(224, 217, 217);
   background: #c3c0c5;
   border-radius: 8px;
   margin-bottom: 3rem;
