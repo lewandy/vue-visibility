@@ -1,6 +1,6 @@
 # Vue Visibility 👀
 
-😁 Hides elements depending of a criteria.
+😁 Hides or shows elements depending of a criteria.
 
 ## Vue 3 support 💚
 
