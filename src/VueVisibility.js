@@ -4,11 +4,12 @@ export default {
     identifier: {
       required: true,
     },
-    disable: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    // Future feature
+    // disable: {
+    //   type: Boolean,
+    //   required: false,
+    //   default: false,
+    // },
   },
   render(context) {
     const { identifier, disable } = context;
