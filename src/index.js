@@ -1,48 +1,43 @@
 import VisibilityProvider from "./VueVisibility";
 
-const directive = (app) => {
-  return (el, binding) => {
-    const permissions = app.config.globalProperties.$vpermissions;
+const VueVisibilityDirective = (el, binding) => {
+  const permissionId = binding.value;
+  const permissions = binding.instance.$getVisibilityPermissions();
+  const userIsAuthorized = permissions.find((id) => id === permissionId);
 
-    const userCanSeeElement = permissions.find(
-      (item) => item === binding.value
-    );
-
-    if (!userCanSeeElement) {
-      el.parentNode.removeChild(el); //Remove element from the DOM
-    }
-  };
+  if (!userIsAuthorized) {
+    el.parentNode.removeChild(el); //Remove element from the DOM
+  }
 };
 
-// Install the components
-export default {
-  install(app) {
-    //Register directive
-    app.directive("visibility", directive(app));
+function install(app) {
+  //Register directive
+  app.directive("visibility", VueVisibilityDirective);
 
-    /**
-      Mixin for set methods is entire app.
-    */
-    app.mixin({
-      methods: {
-        $setVisibilityPermissions(permissions) {
-          app.config.globalProperties.$vpermissions = permissions;
-        },
+  /**
+    Mixin for set methods is entire app.
+  */
+  app.mixin({
+    methods: {
+      $setVisibilityPermissions(permissions) {
+        app.config.globalProperties.$vpermissions = permissions;
       },
-    });
+      $getVisibilityPermissions() {
+        return app.config.globalProperties.$vpermissions;
+      },
+    },
+  });
 
-    //Register the component
-    app.component(VisibilityProvider.name, VisibilityProvider);
-  },
+  //Register component globally
+  app.component(VisibilityProvider.name, VisibilityProvider);
+}
+
+export default {
+  install,
 };
 
 // Auto-install
-let globalVueInstance = null;
-if (typeof window !== "undefined") {
-  globalVueInstance = window.Vue;
-} else if (typeof global !== "undefined") {
-  globalVueInstance = global.Vue;
-}
-if (globalVueInstance) {
-  globalVueInstance.use(plugin);
+var inBrowser = typeof window !== "undefined";
+if (inBrowser && window.Vue) {
+  window.Vue.use({ install });
 }

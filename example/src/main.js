@@ -1,7 +1,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import VisibilityValidator from "../../src/index";
+import VueVisibility from "../../src/index";
 
-createApp(App)
-  .use(VisibilityValidator)
-  .mount("#app");
+const application = createApp(App);
+
+application.use(VueVisibility);
+
+application.mount("#app");
