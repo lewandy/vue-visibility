@@ -1,5 +1,5 @@
 {
-  "name": "vue-visibility",
+  "name": "@lewandy/vue-visibility",
   "version": "0.0.1",
   "main": "vue-visibility.umd.js",
   "module": "dist/vue-visibility.esm.js",
@@ -19,5 +19,20 @@
     "rollup-plugin-vue": "^3.0.0",
     "vue": "^3.0.2",
     "vue-template-compiler": "^2.5.16"
-  }
+  },
+  "description": "🚪 Hides elements depending of the user permissions",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lewandy/vue-visibility.git"
+  },
+  "author": "Lewandy Dilone Bonifacio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lewandy/vue-visibility/issues"
+  },
+  "homepage": "https://github.com/lewandy/vue-visibility#readme"
 }
