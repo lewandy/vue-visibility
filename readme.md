@@ -1,19 +1,19 @@
 # Vue Visibility 👀
 
-Hides elements depending of the user permissions.
+😁 Hides elements depending of the user permissions.
 
-## Vue 3 support
+## Vue 3 support 💚
 
 # Install
 
 ```sh
-npm install --save vue-visibility
+npm install --save @lewandy/vue-visibility
 ```
 
 or
 
 ```sh
-yarn add vue-visibility
+yarn add @lewandy/vue-visibility
 ```
 
 # 🕹 Usage
@@ -43,9 +43,9 @@ export default {
 </script>
 ```
 
-# 🔎 Example
+# 🔎 Examples
 
-## Using provider  component with placeholder if not authorized.
+## Using provider with placeholder slot if not authorized
 
 ```html
 <template>
@@ -58,7 +58,7 @@ export default {
 </template>
 ```
 
-## Using directive.
+## Using the directive.
 
 ```html
 <template>
@@ -90,6 +90,11 @@ export default {
         </tr>
     </tbody>
 </table>
+
+# TODO
+
+1. Feature : Can disable elements and make it not clickable.
+2. Chore : Write basic tests
 
 # 🤝 Contributing
 
