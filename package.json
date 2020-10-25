@@ -1,17 +1,17 @@
 {
-  "name": "vue-permission-provider",
+  "name": "vue-visibility",
   "version": "0.0.1",
-  "main": "vue-permission-provider.umd.js",
-  "module": "dist/vue-permission-provider.esm.js",
-  "unpkg": "dist/vue-permission-provider.min.js",
+  "main": "vue-visibility.umd.js",
+  "module": "dist/vue-visibility.esm.js",
+  "unpkg": "dist/vue-visibility.min.js",
   "browser": {
-    "./sfc": "src/permissionProvider.js"
+    "./sfc": "src/VueVisibility.js"
   },
   "scripts": {
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-permission-provider.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-permission-provider.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-permission-provider.min.js"
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-visibility.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-visibility.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-visibility.min.js"
   },
   "devDependencies": {
     "rollup": "^0.57.1",

@@ -1,4 +1,4 @@
-import VisibilityProvider from "./VisibilityValidator";
+import VisibilityProvider from "./VueVisibility";
 
 const directive = (app) => {
   return (el, binding) => {
