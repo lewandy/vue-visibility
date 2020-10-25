@@ -20,10 +20,7 @@
     "vue": "^3.0.2",
     "vue-template-compiler": "^2.5.16"
   },
-  "description": "🚪 Hides elements depending of the user permissions",
-  "directories": {
-    "example": "example"
-  },
+  "description": "👀 Hides elements depending of the user permissions",
   "dependencies": {},
   "repository": {
     "type": "git",
