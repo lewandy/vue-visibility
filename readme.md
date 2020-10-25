@@ -1,105 +1,92 @@
-# vue-permission-provider
+# Vue Visibility 👀
 
-🚪 Shows or hides elements depending of the user permission for Vue.js
+Hides elements depending of the user permissions.
 
-# 💻 Install
+## Vue 3 support
+
+# Install
 
 ```sh
-npm install --save vue-permission-provider
+npm install --save vue-visibility
 ```
 
 or
 
 ```sh
-yarn add vue-permission-provider
+yarn add vue-visibility
 ```
 
 # 🕹 Usage
 
 ```javascript
-import Vue from "vue";
-import PermissionProvider from "vue-permission-provider";
+import { createApp } from "vue";
+import App from "./App.vue";
+import VueVisibility from "@lewandy/vue-visibility";
 
-Vue.use(PermissionProvider);
+const application = createApp(App);
+
+application.use(VueVisibility);
+
+application.mount("#app");
+```
+
+## Set user permissions or identifiers globally
+
+```javascript
+<script>
+export default {
+  name: "App",
+  created() {
+    this.$root.$setVisibilityPermissions([121, 122, 123]);
+  },
+};
+</script>
 ```
 
 # 🔎 Example
 
-## Set user permissions
-
-```html
-<script>
-  import PermissionsData from "./permissions.json";
-
-  export default {
-    name: "App",
-    created() {
-      this.$setPermissions([1000, 3000, 2000]);
-    },
-  };
-</script>
-```
-
-## With component provider and prop :full in false
+## Using provider  component with placeholder if not authorized.
 
 ```html
 <template>
-  <div id="app">
-    <div>
-      <permission-provider :full="false" :permissionId="1000">
-        <template v-slot="{ isAuthorized }">
-          <button v-show="isAuthorized">My create button</button>
+      <VueVisibilityProvider :identifier="124">
+        <template v-slot:placeholder>
+          <h2>You don't have access to see this.</h2>
         </template>
-      </permission-provider>
+        <div class="card"><h2>CARD 1</h2></div>
+      </VueVisibilityProvider>
+</template>
+```
+
+## Using directive.
+
+```html
+<template>
+  <div>
+    <div v-visibility="123" class="card">
+	<h2>CARD 2</h2>
     </div>
   </div>
 </template>
 ```
 
-## With prop :full in true, in this case you don't need get the scoped slot becouse the component only will render entirely when the user has the permission.
-
-```html
-<template>
-  <div id="app">
-    <div>
-      <permission-provider :full="true" :permissionId="1000">
-        <template v-slot>
-          <button>My create button</button>
-        </template>
-      </permission-provider>
-    </div>
-  </div>
-</template>
-```
-
-# ⚙️ Props
-
-## Options
+# 📦 VueVisibilityProvider component reference 
 
  <table>
  	<thead>
     <tr>
-    <th>Prop</th>
-    <th>Type</th>
-    <th>Required</th>
-    <th>Default</th>
-    <th>Available values</th>
+	    <th>Prop</th>
+	    <th>Type</th>
+	    <th>Required</th>
+	    <th>Default</th>
     </tr>
   </thead>
-	<tbody>
+    <tbody>
     	<tr>
-        <td>full</td>
-        <td>Boolean</td>
-        <td>false</td>
-        <td>false</td>
-        <td>false,true</td>
-        </tr>
-        <tr>
-        <td>permisionId</td>
-        <td>Number</td>
-        <td>true</td>
-        <td>null</td>
-        <td>numbers</td>
+		<td>identifier</td>
+		<td>Any</td>
+		<td>true</td>
+		<td>null</td>
         </tr>
     </tbody>
 </table>
@@ -108,8 +95,8 @@ Vue.use(PermissionProvider);
 
 1. Fork this repository.
 2. Create new branch with feature name.
-3. Go to example and run `npm install` and `npm run dev`.
-4. Create your feature in the src files.
+3. Go to example folder and run `npm install` and `npm run serve`.
+4. The plugin sources files is located in /src/VueVisibility.js.
 5. Commit and set commit message with feature name.
 6. Push your code to your fork repository.
 7. Create pull request. 🙂
