@@ -15,13 +15,14 @@ export default {
     const permissions = context.$root.$vpermissions;
 
     if (!permissions) {
+      //TODO: Improve error handling.
       console.error("Permissions not found");
       return;
     }
 
-    const userCanSeeElement = permissions.find((item) => item === identifier);
+    const userIsAuthorized = permissions.find((item) => item === identifier);
 
-    if (!userCanSeeElement) {
+    if (!userIsAuthorized) {
       if (disable) {
         //TODO: Add disable styles and set not clickeble
       }
