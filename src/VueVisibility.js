@@ -10,7 +10,6 @@ export default {
     const userPermissions = context.$root.$vpermissions;
 
     if (!userPermissions) {
-      //TODO: Improve error handling.
       console.error("Permissions not found");
       return;
     }
