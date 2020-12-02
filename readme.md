@@ -2,8 +2,6 @@
 
 Hides or shows elements depending of a criteria.
 
-## Vue 3 support 💚
-
 # Install
 
 ```sh
@@ -16,7 +14,7 @@ or
 yarn add @lewandy/vue-visibility
 ```
 
-# 🕹 Usage
+# Usage
 
 ```javascript
 import { createApp } from "vue";
@@ -43,7 +41,7 @@ export default {
 </script>
 ```
 
-# 🔎 Examples
+# Examples
 
 ## Using provider with placeholder slot if not authorized
 
@@ -70,7 +68,7 @@ export default {
 </template>
 ```
 
-# 📦 VueVisibilityProvider component reference 
+# VueVisibilityProvider component reference 
 
  <table>
  	<thead>
