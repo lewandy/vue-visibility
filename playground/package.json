@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@lewandy/vue-visibility": "^1.0.0",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/compiler-sfc": "^3.2.45",
     "vue": "^3.0.2",
     "vue-permission-provider": "0.0.1"
   },
